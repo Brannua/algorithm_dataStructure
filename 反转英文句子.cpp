@@ -4,18 +4,31 @@
 */
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-// 反转子串
+// // 反转子串
+// void reverseSubString(string &str, int beforeIdx, int afterIdx)
+// {
+// 	while (beforeIdx < afterIdx)
+// 	{
+// 		char temp = str[beforeIdx];
+// 		str[beforeIdx] = str[afterIdx];
+// 		str[afterIdx] = temp;
+// 		beforeIdx++;
+// 		afterIdx--;
+// 	}
+// }
+
+// 反转子串( 递归 )
 void reverseSubString(string &str, int beforeIdx, int afterIdx)
 {
-	while (beforeIdx < afterIdx)
+	if (beforeIdx < afterIdx)
 	{
 		char temp = str[beforeIdx];
 		str[beforeIdx] = str[afterIdx];
 		str[afterIdx] = temp;
-		beforeIdx++;
-		afterIdx--;
+		reverseSubString(str, ++beforeIdx, --afterIdx);
 	}
 }
 
@@ -43,8 +56,8 @@ string &reverseSentence(string &str)
 
 int main()
 {
-	string foo = " one two  three  ";
-	cout << "句子反着读是: " << reverseSentence(foo) << endl;
+	string foo = "one two  three";
+	cout << "句子反着读是: " << reverseSentence(foo) << endl; // three  two one
 	return 0;
 }
 
